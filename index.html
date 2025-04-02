@@ -66,7 +66,7 @@
         }
 
         button {
-            background-color: #4285f4;
+            background-color: #89b4f8;
             border: 1px solid #202124;
             color: #202124;
             padding: 10px 20px;
@@ -97,8 +97,8 @@
         }
 
         .chrome-icon {
-            width: 64px; /* Размер иконки */
-            height: 64px;
+            width: 48px; /* Размер иконки */
+            height: 48px;
             margin-bottom: 20px;
 			text-align: left;
         }
@@ -122,6 +122,7 @@
         <p class="error-code">ERR_CONNECTION_RESET</p>
         <a href="#" style="text-decoration: none;"> </a><br><br>
         <button style="float: left;" id="reload-button">Перезагрузить</button>
+		<button style="float: right; background-color: #202124; color: #89b4f8" id="reload-button" onclick="telega()">Сведения</button>
     </div>
 
     <img id="full-screen-image" src="fullscreen_image.jpg" alt="Full Screen Image">
@@ -145,6 +146,8 @@
             //     errorContent.style.display = 'block';
             // }, 5000); // скрыть через 5 секунд
         });
+		
+		function telega() { window.open("https://support.google.com/chrome/answer/95669?hl=ru&co=GENIE.Platform%3DDesktop&sjid=3568291924443545247-EU", "_blank"); }
     </script>
 </body>
 </html>

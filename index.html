@@ -125,27 +125,32 @@
         <button style="float: right; background-color: #202124; color: #89b4f8" id="reload-button" onclick="telega()">Сведения</button>
     </div>
 
-    <video id="full-screen-video" src="VID_20250408_100207.mp4" alt="Full Screen Video" controls></video>
+    <video id="myVideo" autoplay muted>
+    <source src="VID_20250408_100207.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+</video>
 
-    <script>
-        const reloadButton = document.getElementById('reload-button');
-        const errorContent = document.getElementById('error-content');
-        const fullScreenVideo = document.getElementById('full-screen-video');
+<script>
+    // Получаем элемент видео
+    const video = document.getElementById('myVideo');
 
-        reloadButton.addEventListener('click', function() {
-            errorContent.style.display = 'none';
-            fullScreenVideo.style.display = 'block';
-
-            // Опционально: Скрыть видео через некоторое время
-            // setTimeout(() => {
-            //     fullScreenVideo.style.display = 'none';
-            //     errorContent.style.display = 'block';
-            // }, 5000); // скрыть через 5 секунд
+    // Функция для автоматического воспроизведения
+    function autoPlayVideo() {
+        video.play().catch(error => {
+            // Обработка ошибок, если видео не может воспроизводиться автоматически
         });
+    }
 
-        function telega() {
-            window.open("https://support.google.com/chrome/answer/95669?hl=ru&co=GENIE.Platform%3DDesktop&sjid=3568291924443545247-EU", "_blank");
+    // Воспроизводим видео при загрузке страницы
+    window.onload = autoPlayVideo;
+
+    // Воспроизводим видео при перезагрузке
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            autoPlayVideo();
         }
-    </script>
+    };
+</script>
+
 </body>
 </html>

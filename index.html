@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Не удается получить доступ к сайту</title>
+    <title>Не удаётся получить доступ к сайту</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            overflow: hidden; /* Предотвращает полосы прокрутки при появлении изображения */
+            overflow: hidden; /* Предотвращает полосы прокрутки при появлении видео */
         }
 
         .error-container {
@@ -32,17 +32,17 @@
             font-size: 2em;
             font-weight: normal;
             margin-bottom: 10px;
-			color: #98a0a6;
-			clear: left;
-		text-align: left;
+            color: #98a0a6;
+            clear: left;
+            text-align: left;
         }
 
         p {
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 15px;
-			text-align: left;
-			color: #98a0a6;
+            text-align: left;
+            color: #98a0a6;
         }
 
         ul {
@@ -54,7 +54,7 @@
 
         li {
             margin-bottom: 8px;
-			color: #98a0a6;
+            color: #98a0a6;
         }
 
         .error-code {
@@ -62,7 +62,7 @@
             font-size: 1.1em;
             color: #98a0a6;
             margin-bottom: 15px;
-			text-align: left;
+            text-align: left;
         }
 
         button {
@@ -84,13 +84,13 @@
             display: none;
         }
 
-        #full-screen-image {
+        #full-screen-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /*  или cover, если нужно заполнить весь экран */
+            object-fit: contain; /* или cover, если нужно заполнить весь экран */
             z-index: 9999; /* Отображение поверх всего остального */
             background-color: #202124; /* Белый фон чтобы не было видно ничего позади */
             display: none; /* Скрыто по умолчанию */
@@ -100,19 +100,19 @@
             width: 48px; /* Размер иконки */
             height: 48px;
             margin-bottom: 20px;
-			text-align: left;
+            text-align: left;
         }
-		
-		img[hidden] {
-			display: none;
-		}
+
+        img[hidden] {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="error-container" id="error-content">
-		<img hidden src="chrome_error_icon.jpg" alt="Chrome Dino Icon" class="chrome-icon">
-        <img align="left" src="chrome_error_icon.jpg" alt="Chrome Dino Icon" class="chrome-icon"> <!--  Замените 'chrome-dino.png' на реальный путь к иноке  -->
-        <h1>Не удается получить доступ к сайту</h1>
+        <img hidden src="chrome_error_icon.jpg" alt="Chrome Dino Icon" class="chrome-icon">
+        <img align="left" src="chrome_error_icon.jpg" alt="Chrome Dino Icon" class="chrome-icon"> <!-- Замените 'chrome-dino.png' на реальный путь к иконке -->
+        <h1>Не удаётся получить доступ к сайту</h1>
         <p>Соединение сброшено.</p>
         <p>Попробуйте сделать следующее:</p>
         <ul>
@@ -122,32 +122,30 @@
         <p class="error-code">ERR_CONNECTION_RESET</p>
         <a href="#" style="text-decoration: none;"> </a><br><br>
         <button style="float: left;" id="reload-button">Перезагрузить</button>
-		<button style="float: right; background-color: #202124; color: #89b4f8" id="reload-button" onclick="telega()">Сведения</button>
+        <button style="float: right; background-color: #202124; color: #89b4f8" id="reload-button" onclick="telega()">Сведения</button>
     </div>
 
-    <img id="full-screen-image" src="fullscreen_image.jpg" alt="Full Screen Image">
-
-    <audio id="reload-sound" src="reload_sound1.mp3" preload="auto"></audio>
+    <video id="full-screen-video" src="fullscreen_video.mp4" alt="Full Screen Video" controls></video>
 
     <script>
         const reloadButton = document.getElementById('reload-button');
         const errorContent = document.getElementById('error-content');
-        const fullScreenImage = document.getElementById('full-screen-image');
-        const reloadSound = document.getElementById('reload-sound');
+        const fullScreenVideo = document.getElementById('full-screen-video');
 
         reloadButton.addEventListener('click', function() {
-            reloadSound.play();
             errorContent.style.display = 'none';
-            fullScreenImage.style.display = 'block';
+            fullScreenVideo.style.display = 'block';
 
-            //  Опционально: Скрыть изображение через некоторое время
+            // Опционально: Скрыть видео через некоторое время
             // setTimeout(() => {
-            //     fullScreenImage.style.display = 'none';
+            //     fullScreenVideo.style.display = 'none';
             //     errorContent.style.display = 'block';
             // }, 5000); // скрыть через 5 секунд
         });
-		
-		function telega() { window.open("https://support.google.com/chrome/answer/95669?hl=ru&co=GENIE.Platform%3DDesktop&sjid=3568291924443545247-EU", "_blank"); }
+
+        function telega() {
+            window.open("https://support.google.com/chrome/answer/95669?hl=ru&co=GENIE.Platform%3DDesktop&sjid=3568291924443545247-EU", "_blank");
+        }
     </script>
 </body>
 </html>
